@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
 """
-A function def that returns a list of lists of integers
-representing the Pascal’s triangle of n:
+Generates Pascal's triangle up to the nth row.
 """
 
 
-
-
 def pascal_triangle(n):
-    """The function generates Pascal's triangle up to the nth row."""
+    """function that generates Pascal's triangle up to the nth row."""
     if n <= 0:
         return []
 
