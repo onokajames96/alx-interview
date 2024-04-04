@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 """
 Function UTF-8 Validation
 """
@@ -8,6 +7,7 @@ Function UTF-8 Validation
 def validUTF8(data):
     """Defining UTF8"""
     bits_count = 0
+
     for byte in data:
         if bits_count == 0:
             if (byte >> 5) == 0b110:
