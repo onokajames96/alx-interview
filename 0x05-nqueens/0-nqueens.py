@@ -1,33 +1,46 @@
 #!/usr/bin/python3
-"""
- Queen, Backtracking
-"""
+"""The N Queens challenge"""
 
 import sys
 
 
-def solve_nqueens(n):
-    """Solves the N queens problem recursively."""
-    if n == 0:
-        return [[]]
-    inner_solution = solve_nqueens(n - 1)
-    return [solution + [(n, i + 1)]
-            for i in range(n_q)
-            for solution in inner_solution
-            if safe_queen((n, i + 1), solution)]
-
-
-def attack_queen(square, queen):
-    """Checks an attack between two queens."""
-    (row1, col1) = square
-    (row2, col2) = queen
-    return (row1 == row2) or (col1 == col2) or\
-        abs(row1 - row2) == abs(col1 - col2)
-
-
-def safe_queen(sqr, queens):
-    """Checks queen placement."""
-    for queen in queens:
-        if attack_queen(sqr, queen):
+def is_n_queen(cell: list) -> bool:
+    """Check if a queen can be placed at a given position."""
+    row_number = len(cell) - 1
+    for i in range(row_number):
+        col_diff = abs(cell[i] - cell[row_number])
+        if col_diff == 0 or col_diff == row_number - i:
             return False
     return True
+
+
+def solve_n_queens(dimension: int, row: int, cell: list, result: list):
+    """Recursively solve the N queens problem."""
+    if row == dimension:
+        print(result)
+    else:
+        for column in range(dimension):
+            cell.append(column)
+            result.append([row, column])
+            if is_n_queen(cell):
+                solve_n_queens(dimension, row + 1, cell, result)
+            cell.pop()
+            result.pop()
+
+
+if len(sys.argv) != 2:
+    print('Usage: nqueens N')
+    sys.exit(1)
+
+try:
+    n = int(sys.argv[1])
+except ValueError:
+    print('N must be a number')
+    sys.exit(1)
+
+if n < 4:
+    print('N must be at least 4')
+    sys.exit(1)
+else:
+    result = []
+    solve_n_queens(n, 0, [], result)
