@@ -3,7 +3,7 @@
 
 
 def rotate_2d_matrix(matrix):
-    """Rotates the matix 
+    """Rotates the matix
     """
     replica = matrix[:]
 
