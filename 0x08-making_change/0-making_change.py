@@ -1,9 +1,14 @@
 #!/usr/bin/python3
-"""Making change."""
+"""Making change module."""
 
 
 def makeChange(coins, total):
-    # If total is 0 or less, no coins are needed
+    """
+    Return the minimum number of coins needed to make up the given total value
+    using the available coin denominations. If it's impossible to make the
+    total,
+    return -1.
+    """
     if total <= 0:
         return 0
 
