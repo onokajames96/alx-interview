@@ -4,7 +4,7 @@
 
 def makeChange(coins, total):
     """
-    Calculate the minimum number of coins required to reach 
+    Calculate the minimum number of coins required to reach
     a given total amount using different coin denominations.
     """
     if total <= 0:
